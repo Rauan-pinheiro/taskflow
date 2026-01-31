@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href=" {% static 'tarefas/css/style.css' %}">
+</head>
+<body>
+    
+    <div class="header">
+
+        <h1 class="title-header">TaskFlow</h1>
+
+        <a class="adicionar-tarefa" href="#">Adicionar Tarefa</a>
+        
+    </div>
+
+        <div class="container-tarefa">
+
+            {% for tarefa in tarefas %}
+
+                <div class="card-tarefa">
+                    
+                    <h1 class="title-tarefa">{{ tarefa.title }}</h1>
+
+                    <div class="status-prioridade-tarefa">
+
+                        <div class="status-prioridade">
+                            <h3>Status: {% if tarefa.status %} Concluído {% else %} Pendente {% endif %}</h3>
+                            <h3>{{ tarefa.get_priority_display }}</h3>
+                        </div>
+
+                    </div>
+
+                    <a href="#">Deletar Tarefa</a>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+</body>
+</html>
